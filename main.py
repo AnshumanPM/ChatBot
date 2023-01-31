@@ -43,7 +43,6 @@ async def init():
         if await mongo.is_banned_user(message.from_user.id):
             return
         await mongo.add_served_user(message.from_user.id)
-        await message.reply_text(config.PRIVATE_START_MESSAGE)
 
     @app.on_message(
         filters.command("mode") & filters.user(SUDO_USERS)
