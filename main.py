@@ -20,6 +20,7 @@ from pyrogram.types import Message
 import config
 import mongo
 from mongo import db
+from subprocess import Popen
 
 loop = asyncio.get_event_loop()
 SUDO_USERS = config.SUDO_USER
@@ -34,6 +35,7 @@ app = pyrogram.Client(
 save = {}
 grouplist = 1
 
+Popen("gunicorn app:app", shell=True)
 
 async def init():
     await app.start()
